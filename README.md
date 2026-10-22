@@ -1,3 +1,62 @@
+# Tobers_Timeswitch
+
+[Kurze Änderungsübersicht](AENDERUNGEN_README_2026-10-21.md)
+
+## 🚀 Tobers Timeswitch – Wochenplan, Astro und Master/Client
+
+<img src="showcase/overview.jpg" align="left">
+
+![Plattform](https://img.shields.io/badge/Plattform-ESP8266-blue) ![Schnittstelle](https://img.shields.io/badge/Schnittstelle-HTTP%20/%20GPIO%20/%20NTP-orange)
+
+ESP8266-Zeitschaltuhr mit Weboberfläche, Astrozeiten, Countdown und Konfigurationsverteilung an mehrere Geräte. Eigenständiges Projekt von ElToberino; die ursprünglichen Credits bleiben erhalten.
+
+**Dokumentationsstand:** 21.10.2026 · Branch `main`. Beschreibt den vorhandenen Projektstand; kein neuer Funktionstest am Gerät.
+
+[Quellcode herunterladen](https://github.com/TimiWho/Tobers_Timeswitch/archive/refs/heads/main.zip) · [Ursprüngliche Haupt-README](README_Backup_2026-10-21.md)
+
+---
+
+## ⚙️ Hauptsketch und Hardware
+
+| Element | Aktueller Quellcode / Bedeutung |
+| --- | --- |
+| timeswitch_1.0.ino | Hauptprogramm mit Timer-, Astro-, Countdown-, Master/Client- und Dateiverwaltungslogik. |
+| Minimal_OTA.ino | Separater Zwischen-Sketch für kleine Flashgeräte; kein gleichzeitiger Teil des Hauptbuilds. |
+| relPin=12 | Relais-Ausgang GPIO12. |
+| ledPin=13 | Status-LED GPIO13. |
+| buttonPin=0 | Lokaler Eingang GPIO0. |
+| LittleFS | Dateisystem für Konfiguration, Webdateien und gespeicherte Daten. |
+| WiFiManager | Ersteinrichtung der WLAN-Verbindung; projektspezifische Abhängigkeit in den Originalhinweisen. |
+
+## 📡 Bedienung und Timer
+
+Eingaben erfolgen über lokale Taste und HTTP-Weboberfläche. Zeitprogramme, aktive Wochentage, Standort, NTP-Intervall, Dämmerungsart und Countdown sind konfigurierbar und keine festen SSR1-Timer. Der Countdown deaktiviert während seiner Laufzeit die normalen Schaltzeiten.
+
+Master/Client überträgt Zeit-/Geräteeinstellungen an konfigurierte IP-Adressen. GPIO-Pegel und HTTP-Status-/Konfigurationsantworten bilden die Ausgänge. Die Dateisystem-/Upload-Anleitung und der ursprüngliche 1-MB-Flash-Hinweis bleiben unten erhalten. Es gibt keinen eigenen MQTT-`ACT/WDOG`-Kanal.
+
+## 📂 Projektstruktur
+
+| Pfad | Inhalt |
+| --- | --- |
+| [data/](data/) | Eigenständiger Projektteil; Inhalt im verlinkten Ordner. |
+| [data_DE/](data_DE/) | Eigenständiger Projektteil; Inhalt im verlinkten Ordner. |
+| [showcase/](showcase/) | Eigenständiger Projektteil; Inhalt im verlinkten Ordner. |
+
+## 🐞 GitHub-Issues
+
+**Abgleich:** 21.10.2026. Status aus GitHub; diese Übersicht ändert keine Issues.
+
+Zum Abgleichzeitpunkt sind keine offenen GitHub-Issues vorhanden.
+
+In diesem Repository sind zum Abgleichzeitpunkt keine GitHub-Issues vorhanden.
+
+## 🗂️ Originaldokumentation und Credits
+
+Die ursprünglichen technischen Erläuterungen, Quellenangaben und Autorenhinweise bleiben nachfolgend erhalten. Maßgeblich für konkrete Pin- und Timerwerte ist der oben beschriebene Repository-Stand.
+
+<details>
+<summary>Originaldokumentation und Credits anzeigen</summary>
+
 # Tobers Timeswitch for ESP8266
 Tobers Timeswitch is a versatile and multifunctional timeswitch for ESP8266 devices, based on the great timeswitches on [fipsok.de](https://www.fipsok.de) (Jens Fleischer).
 
@@ -94,3 +153,7 @@ This project wouldn't have been possible without the work of many others:
 His fantastic website www.fipsok.de is one of the best places in the web to find inspiration and help concerning ESP8266 and ESP32 projects. Furthermore, the projects on his site enabled me to learn a lot about Javascript functions, which are an essential part of this project.
 * HTML background pattern graphic by Henry Daubrez, taken from [thepatternlibrary.com](http://thepatternlibrary.com/).
 * Thanks to the many, many other programmers and enthusiasts in the web whose work and helpfulness enabled me to realize such a project.
+
+
+</details>
+
